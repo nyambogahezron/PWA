@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#2F3BA2">
+    <link rel="manifest" href="manifest.json">
+    <title>Blog Post Detail</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <header>
+        <h1>Post Title (Dynamic)</h1>
+    </header>
+
+    <section id="post-content">
+        <img id="post-image" src="" alt="Post Image" class="post-image-large">
+        <p id="post-description">This is where the full content of the post will go.</p>
+    </section>
+
+    <footer>
+        <p><a href="index.html">Back to Home</a></p>
+    </footer>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const postId = urlParams.get('post');
+
+        const postData = {
+            1: {
+                title: "Post Title 1",
+                image: "images/post-image.png",
+                description: "This is the full content of the first blog post..."
+            },
+            2: {
+                title: "Post Title 2",
+                image: "images/post-image.png",
+                description: "This is the full content of the second blog post..."
+            },
+            3: {
+                title: "Post Title 3",
+                image: "images/post-image.png",
+                description: "This is the full content of the third blog post..."
+            },
+            4: {
+                title: "Post Title 4",
+                image: "images/post-image.png",
+                description: "This is the full content of the fourth blog post..."
+            },
+            5: {
+                title: "Post Title 5",
+                image: "images/post-image.png",
+                description: "This is the full content of the fifth blog post..."
+            }
+        };
+
+        // Populate the page with the selected post data
+        const post = postData[postId];
+        if (post) {
+            document.querySelector('h1').textContent = post.title;
+            document.querySelector('#post-image').src = post.image;
+            document.querySelector('#post-description').textContent = post.description;
+        } else {
+            document.querySelector('h1').textContent = 'Post not found';
+            document.querySelector('#post-description').textContent = 'The post you are looking for does not exist.';
+        }
+    </script>
+</body>
+
+</html>
